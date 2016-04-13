@@ -1,2 +1,2 @@
 # SkillTreeMVC
-skill tree asp .net mvc 5 training
+skill tree asp .net mvc 5 homework
