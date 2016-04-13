@@ -29,10 +29,27 @@ namespace MVCHomework.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            List<SelectListItem> itemList = new List<SelectListItem>();
+
+            itemList.Add(new SelectListItem
+            {
+                Text = "請選擇",
+                Value = string.Empty
+            });
+
+            foreach (CategoryType category in Enum.GetValues(typeof(CategoryType)))
+            {
+                itemList.Add(new SelectListItem
+                {
+                    Text = category.GetEnumDisplayName(),
+                    Value = category.ToString()
+                });
+            }
+            return View(itemList);
         }
 
-        public ActionResult Add(RecordViewModel pageData)
+        [HttpPost]
+        public ActionResult Index(RecordViewModel pageData)
         {
             pageData.No = records.Max(x => x.No) + 1;
             records.Add(pageData);
