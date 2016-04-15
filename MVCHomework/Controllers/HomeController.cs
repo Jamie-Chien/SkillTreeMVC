@@ -59,7 +59,7 @@ namespace MVCHomework.Controllers
         [ChildActionOnly]
         public ActionResult Records()
         {
-            return View("_Records", records);
+            return View("Records", records);
         }
 
         public ActionResult About()
