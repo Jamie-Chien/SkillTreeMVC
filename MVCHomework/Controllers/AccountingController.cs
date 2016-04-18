@@ -1,4 +1,4 @@
-﻿using MVCHomework.Infra;
+﻿using MVCHomework.Infra.Extension;
 using MVCHomework.Models;
 using MVCHomework.ViewModels;
 using System;

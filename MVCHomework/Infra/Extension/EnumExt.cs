@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 
-namespace MVCHomework.Infra
+namespace MVCHomework.Infra.Extension
 {
     public static class EnumExt
     {
