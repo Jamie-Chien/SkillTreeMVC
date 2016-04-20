@@ -5,10 +5,10 @@ namespace MVCHomework.DataAccessLayer.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class SkillTree : DbContext
+    public partial class SkillTreeDbContext : DbContext
     {
-        public SkillTree()
-            : base("name=SkillTree")
+        public SkillTreeDbContext()
+            : base("name=SkillTreeDbContext")
         {
         }
 
