@@ -7,7 +7,7 @@ namespace MVCHomework.DataAccessLayer.Repository.Interface
     {
         DbSet<TEntity> Set();
 
-        void Attach(TEntity entity);
+        void Create(TEntity entity);
 
         void Modify(TEntity entity);
 

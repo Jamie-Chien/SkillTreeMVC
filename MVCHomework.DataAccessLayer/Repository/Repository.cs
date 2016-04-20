@@ -18,9 +18,9 @@ namespace MVCHomework.DataAccessLayer.Repository
             return db.Set<TEntity>();
         }
 
-        public void Attach(TEntity entity)
+        public void Create(TEntity entity)
         {
-            db.Entry(entity).State = EntityState.Unchanged;
+            db.Set<TEntity>().Add(entity);
         }
 
         public void Modify(TEntity entity)

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<SelectListItem>
+@{
+    Layout = null;
+}
+<label for="category" class="col-sm-2 control-label">類別</label>
+<div class="col-sm-10">
+    @Html.DropDownList("category", Model, new { id = "category", @class = "form-control" })
+</div>

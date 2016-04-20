@@ -44,7 +44,7 @@ namespace MVCHomework.App_Start
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
-            container.RegisterType<DbContext, SkillTreeDbContext>();
+            container.RegisterType<DbContext, SkillTreeDbContext>(new PerRequestLifetimeManager());
             container.RegisterType(typeof(IRepository<>), typeof(Repository<>));
             container.RegisterType<IAccountBookService, AccountBookService>();
         }

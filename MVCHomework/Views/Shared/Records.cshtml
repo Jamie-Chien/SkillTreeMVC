@@ -1,7 +1,12 @@
-﻿@model List<MVCHomework.ViewModels.RecordViewModel>
+﻿@using MVCHomework.Infra.Extension;
+@using PagedList.Mvc
+@using PagedList
+@model PagedList<MVCHomework.ViewModels.RecordViewModel>
+
 @{
     Layout = null;
 }
+
 <div class="row">
     <div class="col-md-12">
         <table class="table table-bordered table-hover">
@@ -11,15 +16,19 @@
                 <th>日期</th>
                 <th>金額</th>
             </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.No</td>
-                    <td>@item.Category.GetEnumDisplayName()</td>
-                    <td>@item.Date.ToString("yyyy-MM-dd")</td>
-                    <td>@item.Money.ToString("#,##0")</td>
-                </tr>
+            @{
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@item.Category.GetEnumDisplayName()</td>
+                        <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Money.ToString("#,##0")</td>
+                    </tr>
+                }
             }
         </table>
     </div>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 </div>

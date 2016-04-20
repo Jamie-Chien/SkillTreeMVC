@@ -317,6 +317,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Records.cshtml" />
     <Content Include="Views\Accounting\Index.cshtml" />
+    <Content Include="Views\Shared\CategoryDropDownList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVCHomework.BusinessLogicLayer\MVCHomework.BusinessLogicLayer.csproj">
