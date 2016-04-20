@@ -8,12 +8,12 @@ namespace MVCHomework.Models
         /// 支出
         /// </summary>
         [Display(Name = "支出")]
-        Pay = 1,
+        Pay = 0,
 
         /// <summary>
         /// 收入
         /// </summary>
         [Display(Name = "收入")]
-        Income = 2
+        Income = 1
     }
 }
