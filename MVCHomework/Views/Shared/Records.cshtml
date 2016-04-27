@@ -7,7 +7,7 @@
     Layout = null;
 }
 
-<div class="row">
+<div class="row" id="Records">
     <div class="col-md-12">
         <table class="table table-bordered table-hover">
             <tr>
@@ -22,7 +22,17 @@
                 {
                     <tr>
                         <td>@(i++)</td>
-                        <td>@item.Category.GetEnumDisplayName()</td>
+                        @if (item.Category == MVCHomework.Models.CategoryType.Income)
+                        {
+                            <td class="text-primary">@item.Category.GetEnumDisplayName()</td>
+                        }
+                        else
+                        {
+                            <td class="text-danger">@item.Category.GetEnumDisplayName()</td>
+                        }
+                        <td>
+                            @Html.DisplayTextFor(x => item.Category)
+                        </td>
                         <td>@item.Date.ToString("yyyy-MM-dd")</td>
                         <td>@item.Money.ToString("#,##0")</td>
                     </tr>

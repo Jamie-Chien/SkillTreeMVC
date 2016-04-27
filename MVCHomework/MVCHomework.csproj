@@ -237,6 +237,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infra\CurrentDateValidation.cs" />
     <Compile Include="Infra\Extension\EnumExt.cs" />
     <Compile Include="Infra\UnitOfWork.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -248,14 +249,15 @@
     <Compile Include="ViewModels\RecordViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SkillTreeHomeworkDB.mdf" />
-    <Content Include="App_Data\SkillTreeHomeworkDB_log.ldf">
-      <DependentUpon>SkillTreeHomeworkDB.mdf</DependentUpon>
+    <Content Include="App_Data\SkillTreeHomework.mdf" />
+    <Content Include="App_Data\SkillTreeHomework_log.ldf">
+      <DependentUpon>SkillTreeHomework.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MoneyTemplate.html" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -266,9 +268,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.3.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -317,7 +323,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Records.cshtml" />
     <Content Include="Views\Accounting\Index.cshtml" />
-    <Content Include="Views\Shared\CategoryDropDownList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVCHomework.BusinessLogicLayer\MVCHomework.BusinessLogicLayer.csproj">
@@ -337,7 +342,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
