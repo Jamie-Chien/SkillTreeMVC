@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using MVCHomework.Infra;
+using System.Web.Mvc;
 
 namespace MVCHomework.ViewModels
 {
@@ -30,8 +31,9 @@ namespace MVCHomework.ViewModels
         /// </summary>
         [Required]
         [DataType(DataType.Date)]
-        [CurrentDateValidation]
+        [CurrentDate]
         [Display(Name = "日期")]
+        [Remote("CurrentDate", "Verify", ErrorMessage = "日期不可小於今日")]
         public DateTime Date { get; set; }
 
         /// <summary>

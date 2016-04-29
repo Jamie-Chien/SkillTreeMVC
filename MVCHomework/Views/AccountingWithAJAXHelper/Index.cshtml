@@ -1,0 +1,103 @@
+﻿@using MVCHomework.ViewModels
+@model RecordViewModel
+@{
+    ViewBag.Title = "我的記帳本";
+}
+<div class="well">
+    @using (Ajax.BeginForm("Add",
+                                                        routeValues: new { controller = "AccountingWithAJAXHelper" },
+                                                        ajaxOptions: new AjaxOptions()
+                                                        {
+                                                            UpdateTargetId = "Records",
+                                                            LoadingElementId = "LoadingButton",
+                                                            OnSuccess = "Ctrl.handleSuccess",
+                                                            OnFailure = "Ctrl.handleFail",
+                                                            OnComplete = "Ctrl.Completed",
+                                                            OnBegin = "Ctrl.handleBegin"
+                                                        },
+                                                        htmlAttributes: new
+                                                        {
+                                                            id = "Form",
+                                                            @class = "form-horizontal",
+                                                        }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label for="Category" class="col-sm-2 control-label">類別</label>
+            <div class="col-sm-10">
+                @Html.EnumDropDownListFor(x => x.Category, "請選擇", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="Money">金額</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.Money, new { htmlattributes = new { @class = "form-control", required = "true", MinLength = 1, placeholder = "金額" } })
+            </div>
+            <div class="col-sm-10 col-sm-push-2">
+                @Html.ValidationMessageFor(m => m.Money, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="Date">日期</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.Date, new { htmlattributes = new { @class = "form-control", required = "true", placeholder = "日期" } })
+            </div>
+            <div class="col-sm-10 col-sm-push-2">
+                @(Html.ValidationMessageFor(m => m.Date, string.Empty, new { @class = "text-danger" }))
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="Description">備註</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.Description, new { htmlattributes = new { @class = "form-control", required = "true", } })
+            </div>
+            <div class="col-sm-10 col-sm-push-2">
+                @(Html.ValidationMessageFor(m => m.Description, string.Empty, new { @class = "text-danger" }))
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-8 col-sm-4">
+                <button id="SubmitButton" class="btn btn-default">送出</button>
+                <button id="LoadingButton" class="btn btn-default">
+                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate">
+                    </span> Loading...
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+@Html.Action("Records")
+
+@section scripts{
+    <script type="text/javascript">
+
+        var Ctrl = {
+            SubmitButton: undefined,
+            LoadingButton: undefined,
+            Form: undefined,
+            init: function () {
+                this.SubmitButton = $('#SubmitButton');
+                this.LoadingButton = $('#LoadingButton').hide();
+                this.Form = $('#Form')
+            },
+            handleBegin: function () {
+                Ctrl.SubmitButton.hide();
+            },
+            handleSuccess: function (data, textStatus, jqXHR) {
+                Ctrl.SubmitButton.show();
+                Ctrl.Form[0].reset();
+
+            },
+            handleFail: function (jqXHR, textStatus, errorThrown) {
+                alert("發生錯誤，請稍候再試")
+            },
+            Completed: function () {
+                Ctrl.SubmitButton.show();
+            }
+        }
+        Ctrl.init();
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

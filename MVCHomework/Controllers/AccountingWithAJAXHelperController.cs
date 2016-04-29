@@ -2,18 +2,16 @@
 using MVCHomework.BusinessLogicLayer.Service;
 using MVCHomework.DataAccessLayer;
 using MVCHomework.DataAccessLayer.Entity;
-using MVCHomework.Infra.Extension;
 using MVCHomework.Models;
 using MVCHomework.ViewModels;
 using PagedList;
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web.Mvc;
 
 namespace MVCHomework.Controllers
 {
-    public class AccountingController : Controller
+    public class AccountingWithAJAXHelperController : Controller
     {
         [Dependency]
         public IUnitOfWork uow { get; set; }
@@ -23,9 +21,9 @@ namespace MVCHomework.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Add(RecordViewModel pageData)
         {
+            Thread.Sleep(800);
             if (ModelState.IsValid)
             {
                 AccountBook book = new AccountBook
@@ -40,22 +38,21 @@ namespace MVCHomework.Controllers
                 uow.Commit();
             }
 
-            return View("Index");
+            return RedirectToAction("Records");
         }
 
-        [ChildActionOnly]
         public ActionResult Records(int page = 1, int pageSize = 5)
         {
             var service = uow.Get<IAccountBookService>();
 
             var result = service.Query()
             .Select(x => new RecordViewModel
-             {
-                 Category = (CategoryType)x.Categoryyy,
-                 Date = x.Dateee,
-                 Description = x.Remarkkk,
-                 Money = x.Amounttt
-             }).ToPagedList(page, pageSize);
+            {
+                Category = (CategoryType)x.Categoryyy,
+                Date = x.Dateee,
+                Description = x.Remarkkk,
+                Money = x.Amounttt
+            }).ToPagedList(page, pageSize);
 
             return View(result);
         }

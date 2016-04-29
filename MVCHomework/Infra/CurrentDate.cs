@@ -6,9 +6,9 @@ using System.Web;
 
 namespace MVCHomework.Infra
 {
-    public class CurrentDateValidation : ValidationAttribute
+    public class CurrentDate : ValidationAttribute
     {
-        public CurrentDateValidation() : base()
+        public CurrentDate() : base()
         {
             ErrorMessage = "不可大於今日";
         }

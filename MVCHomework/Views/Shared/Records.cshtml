@@ -15,6 +15,7 @@
                 <th>類別</th>
                 <th>日期</th>
                 <th>金額</th>
+                <th>備註</th>
             </tr>
             @{
                 int i = 1;
@@ -30,11 +31,9 @@
                         {
                             <td class="text-danger">@item.Category.GetEnumDisplayName()</td>
                         }
-                        <td>
-                            @Html.DisplayTextFor(x => item.Category)
-                        </td>
                         <td>@item.Date.ToString("yyyy-MM-dd")</td>
                         <td>@item.Money.ToString("#,##0")</td>
+                        <td>@item.Description</td>
                     </tr>
                 }
             }
